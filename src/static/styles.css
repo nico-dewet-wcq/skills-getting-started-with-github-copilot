@@ -90,20 +90,40 @@ section h3 {
 .participants ul {
   display: grid;
   gap: 6px;
-  padding-left: 20px;
+  padding-left: 0;
   color: #4b5563;
   font-size: 0.95rem;
 }
 
-.participants li::marker {
-  color: #3949ab;
+.participants li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  list-style: none;
 }
 
 .participants .no-participants {
-  list-style: none;
-  margin-left: -20px;
   color: #7a8190;
   font-style: italic;
+}
+
+.participant-remove {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid #ef9a9a;
+  border-radius: 50%;
+  background-color: #fff5f5;
+  color: #c62828;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.participant-remove:hover {
+  background-color: #ffebee;
+  color: #8e0000;
 }
 
 .form-group {
