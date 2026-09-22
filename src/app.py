@@ -8,6 +8,7 @@ for extracurricular activities at Mergington High School.
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse
+from copy import deepcopy
 import os
 from pathlib import Path
 
@@ -20,7 +21,7 @@ app.mount("/static", StaticFiles(directory=os.path.join(Path(__file__).parent,
           "static")), name="static")
 
 # In-memory activity database
-activities = {
+INITIAL_ACTIVITIES = {
     "Chess Club": {
         "description": "Learn strategies and compete in chess tournaments",
         "schedule": "Fridays, 3:30 PM - 5:00 PM",
@@ -76,6 +77,13 @@ activities = {
         "participants": []
     }
 }
+
+
+def get_initial_activities():
+    return deepcopy(INITIAL_ACTIVITIES)
+
+
+activities = get_initial_activities()
 
 
 @app.get("/")
